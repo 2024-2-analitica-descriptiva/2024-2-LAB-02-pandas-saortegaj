@@ -7,19 +7,50 @@ librerias de pandas para resolver las preguntas.
 
 
 def pregunta_09():
-    """
-    Agregue el año como una columna al dataframe que contiene el archivo
-    `tbl0.tsv`.
+    import pandas as pd
 
-    Rta/
-        c0 c1  c2          c3  year
-    0    0  E   1  1999-02-28  1999
-    1    1  A   2  1999-10-28  1999
-    2    2  B   5  1998-05-02  1998
-    ...
-    36  36  B   8  1997-05-21  1997
-    37  37  C   9  1997-07-22  1997
-    38  38  E   1  1999-09-28  1999
-    39  39  E   5  1998-01-26  1998
+    ruta_archivo= "files\input/tbl0.tsv"
 
-    """
+    try:
+       
+        tabla = pd.read_csv(ruta_archivo, sep='\t')
+
+       
+        if 'c3' in tabla.columns:
+
+           
+            tabla['c3'] = pd.to_datetime(tabla['c3'], errors='coerce')
+
+            
+            tabla['year'] = tabla['c3'].dt.year
+            tabla['year'] = tabla['year'].astype(str)
+
+          
+            print(tabla)
+        else:
+            print("La columna 'c3' no existe en el archivo.")
+    except FileNotFoundError:
+        print(f"El archivo '{ruta_archivo}' no existe.")
+    except Exception as e:
+        print(f"Se produjo un error: {e}")
+
+    return tabla
+pregunta_09()
+
+
+    # """
+    # Agregue el año como una columna al dataframe que contiene el archivo
+    # `tbl0.tsv`.
+
+    # Rta/
+    #     c0 c1  c2          c3  year
+    # 0    0  E   1  1999-02-28  1999
+    # 1    1  A   2  1999-10-28  1999
+    # 2    2  B   5  1998-05-02  1998
+    # ...
+    # 36  36  B   8  1997-05-21  1997
+    # 37  37  C   9  1997-07-22  1997
+    # 38  38  E   1  1999-09-28  1999
+    # 39  39  E   5  1998-01-26  1998
+
+    # """

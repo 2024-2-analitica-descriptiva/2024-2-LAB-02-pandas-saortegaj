@@ -7,10 +7,25 @@ librerias de pandas para resolver las preguntas.
 
 
 def pregunta_01():
-    """
-    ¿Cuál es la cantidad de filas en la tabla `tbl0.tsv`?
 
-    Rta/
-    40
+    import pandas as pd
 
-    """
+    # Ruta al archivo tbl0.tsv en la carpeta "files"
+    ruta_archivo = "files\input/tbl0.tsv"
+
+    try:
+        # Leer el archivo usando pandas
+        tabla = pd.read_csv(ruta_archivo, sep='\t')
+        # Contar las filas
+        pregunta_01 = len(tabla)
+        print(pregunta_01)
+    except FileNotFoundError:
+        print(f"El archivo '{ruta_archivo}' no existe.")
+    except Exception as e:
+        print(f"Se produjo un error: {e}")
+    return pregunta_01
+pregunta_01()
+
+
+
+    

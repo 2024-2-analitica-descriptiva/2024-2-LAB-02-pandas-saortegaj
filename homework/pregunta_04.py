@@ -7,16 +7,28 @@ librerias de pandas para resolver las preguntas.
 
 
 def pregunta_04():
-    """
-    Calcule el promedio de `c2` por cada letra de la `c1` del archivo
-    `tbl0.tsv`.
 
-    Rta/
-    c1
-    A    4.625000
-    B    5.142857
-    C    5.400000
-    D    3.833333
-    E    4.785714
-    Name: c2, dtype: float64
-    """
+    import pandas as pd
+
+    # Ruta al archivo tbl0.tsv en la carpeta "files"
+    ruta_archivo = "files\input/tbl0.tsv"
+
+    try:
+    # Leer el archivo usando pandas
+        tabla = pd.read_csv(ruta_archivo, sep='\t')
+    
+    # Verificar si existen las columnas 'c1' y 'c2'
+        if 'c1' in tabla.columns and 'c2' in tabla.columns:
+        # Calcular el promedio de 'c2' agrupado por 'c1'
+            pregunta_04 = tabla.groupby('c1')['c2'].mean()
+            print("Promedio de 'c2' por cada letra en la columna 'c1':")
+            print(pregunta_04)
+        else:
+            print("Las columnas 'c1' y/o 'c2' no existen en el archivo.")
+    except FileNotFoundError:
+        print(f"El archivo '{ruta_archivo}' no existe.")
+    except Exception as e:
+        print(f"Se produjo un error: {e}")
+    return pregunta_04
+        
+pregunta_04()

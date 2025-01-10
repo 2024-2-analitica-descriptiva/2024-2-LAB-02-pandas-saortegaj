@@ -7,16 +7,29 @@ librerias de pandas para resolver las preguntas.
 
 
 def pregunta_07():
-    """
-    Calcule la suma de la `c2` por cada letra de la `c1` del archivo
-    `tbl0.tsv`.
 
-    Rta/
-    c1
-    A    37
-    B    36
-    C    27
-    D    23
-    E    67
-    Name: c2, dtype: int64
-    """
+    import pandas as pd
+
+    # Ruta al archivo tbl0.tsv en la carpeta "files"
+    ruta_archivo = "files\input/tbl0.tsv"
+
+    try:
+    # Leer el archivo usando pandas
+        tabla = pd.read_csv(ruta_archivo, sep='\t')
+    
+    # Verificar si existen las columnas 'c4'
+        if 'c1'  in tabla.columns and 'c2' in tabla.columns:
+        
+            pregunta_07 = tabla.groupby('c1')['c2'].sum()
+            print("la suma por cada letra de 'c1':")
+            print(pregunta_07)
+        else:
+            print("Las columnas 'c1' y/o 'c2' no existen en el archivo.")
+    except FileNotFoundError:
+        print(f"El archivo '{ruta_archivo}' no existe.")
+    except Exception as e:
+        print(f"Se produjo un error: {e}")
+    return pregunta_07
+        
+pregunta_07()
+
