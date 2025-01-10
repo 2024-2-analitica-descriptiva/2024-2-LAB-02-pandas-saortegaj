@@ -16,20 +16,19 @@ def pregunta_09():
         tabla = pd.read_csv(ruta_archivo, sep='\t')
        
         if 'c3' in tabla.columns:
-            # Identificar y corregir fechas inválidas
+        
             for index, row in tabla.iterrows():
-                # Si encontramos una fecha incorrecta como '1999-02-29'
+                
                 if row['c3'] == '1999-02-29':
-                    # Asignamos una fecha válida manualmente
+                   
                     tabla.loc[index, 'c3'] = '1999-02-28'
             
-            # Convertir 'c3' a tipo datetime (esto maneja NaT para valores erróneos)
+           
             tabla['c3'] = pd.to_datetime(tabla['c3'], errors='coerce')
 
-            # Extraer el año de la columna 'c3', incluyendo valores corregidos
+         
             tabla['year'] = tabla['c3'].dt.year.astype(str)
 
-            # Mostrar el DataFrame resultante
             print(tabla)
         else:
             print("La columna 'c3' no existe en el archivo.")
