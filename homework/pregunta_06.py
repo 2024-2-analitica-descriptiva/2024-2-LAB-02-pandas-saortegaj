@@ -10,22 +10,11 @@ def pregunta_06():
 
     import pandas as pd
     ruta_archivo = "files\input/tbl1.tsv"
-
-    try:
     
-        tabla = pd.read_csv(ruta_archivo, sep='\t')
+    tabla = pd.read_csv(ruta_archivo, sep='\t')
 
-        if 'c4' in tabla.columns:
         
-            pregunta_06 = sorted(tabla['c4'].str.upper().unique())
-            print("Promedio de 'c2' por cada letra en la columna 'c1':")
-            print(pregunta_06)
-        else:
-            print("Las columnas 'c1' y/o 'c2' no existen en el archivo.")
-    except FileNotFoundError:
-        print(f"El archivo '{ruta_archivo}' no existe.")
-    except Exception as e:
-        print(f"Se produjo un error: {e}")
-    return pregunta_06 
+    pregunta_06 = sorted(tabla['c4'].str.upper().unique())
+    return pregunta_06
         
 pregunta_06()
