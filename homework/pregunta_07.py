@@ -9,7 +9,7 @@ librerias de pandas para resolver las preguntas.
 def pregunta_07():
 
     import pandas as pd
-    ruta_archivo = "files\input/tbl0.tsv"
+    ruta_archivo = "files/input/tbl0.tsv"
 
     try:
         tabla = pd.read_csv(ruta_archivo, sep='\t')
