@@ -10,13 +10,12 @@ def pregunta_01():
 
     import pandas as pd
 
-    # Ruta al archivo tbl0.tsv en la carpeta "files"
+    
     ruta_archivo = "files\input/tbl0.tsv"
 
     try:
-        # Leer el archivo usando pandas
+        
         tabla = pd.read_csv(ruta_archivo, sep='\t')
-        # Contar las filas
         pregunta_01 = len(tabla)
         print(pregunta_01)
     except FileNotFoundError:

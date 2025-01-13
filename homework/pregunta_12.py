@@ -10,25 +10,15 @@ def pregunta_12():
 
 
     import pandas as pd
-
-    # Ruta al archivo tbl0.tsv en la carpeta "files"
+    
     ruta_archivo = "files\input/tbl2.tsv"
 
     try:
-    # Leer el archivo usando pandas
         tabla = pd.read_csv(ruta_archivo, sep='\t')
-    
-        # Verificar si existen las columnas 'c4'
-        
         tabla['c5'] = tabla['c5a'].astype(str) + ':' + tabla['c5b'].astype(str)
         tabla['c5']=tabla['c5']
         pregunta_12=tabla.groupby('c0')['c5'].apply(lambda x: ','.join(sorted(x))).reset_index()
-        
-        
-        # Renombrar las columnas para mayor claridad
-      
-        
-        # Mostrar el resultado
+    
         print("Tabla con 'c1' y lista de valores de 'c2' separados por ':'")
         print(pregunta_12)
     except FileNotFoundError:

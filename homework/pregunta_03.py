@@ -11,12 +11,12 @@ def pregunta_03():
     ruta_archivo="files\input/tbl0.tsv"
 
     try:
-        # Leer el archivo usando pandas
+        
         tabla = pd.read_csv(ruta_archivo, sep='\t')
         
-        # Verificar si existe la columna 'c1'
+        
         if 'c1' in tabla.columns:
-            # Contar los registros por cada letra de la columna 'c1'
+            
             pregunta_03 = tabla['c1'].value_counts().sort_index()
             print("Cantidad de registros por cada letra en la columna 'c1':")
             print(pregunta_03)

@@ -9,24 +9,19 @@ librerias de pandas para resolver las preguntas.
 def pregunta_08():
      import pandas as pd
 
-     ruta_archivo= "files\input/tbl0.tsv"
+     ruta_archivo= "files/input/tbl0.tsv"
      try:
-
           tabla = pd.read_csv(ruta_archivo, sep='\t')
     
 
           if 'c0' in tabla.columns and 'c2' in tabla.columns:
                tabla['suma'] = tabla['c0'] + tabla['c2']
                
-               print("DataFrame con la columna 'suma' agregada:")
-          
-
-               
+               print("DataFrame con la columna 'suma' agregada:")  
         
           else:
                print("Las columnas 'c0' y/o 'c2' no existen en el archivo.")
             
-      
      except FileNotFoundError:
           print(f"El archivo '{ruta_archivo}' no existe.")
      except Exception as e:

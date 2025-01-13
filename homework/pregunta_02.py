@@ -8,8 +8,6 @@ librerias de pandas para resolver las preguntas.
 
 def pregunta_02():
     import pandas as pd
-
-    # Ruta al archivo tbl0.tsv en la carpeta "files"
     ruta_archivo = "files\input/tbl0.tsv"
 
     try:

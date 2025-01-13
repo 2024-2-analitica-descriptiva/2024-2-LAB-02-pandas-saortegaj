@@ -9,15 +9,11 @@ librerias de pandas para resolver las preguntas.
 def pregunta_07():
 
     import pandas as pd
-
-    # Ruta al archivo tbl0.tsv en la carpeta "files"
     ruta_archivo = "files\input/tbl0.tsv"
 
     try:
-    # Leer el archivo usando pandas
         tabla = pd.read_csv(ruta_archivo, sep='\t')
-    
-    # Verificar si existen las columnas 'c4'
+
         if 'c1'  in tabla.columns and 'c2' in tabla.columns:
         
             pregunta_07 = tabla.groupby('c1')['c2'].sum()

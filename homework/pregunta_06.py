@@ -9,15 +9,12 @@ librerias de pandas para resolver las preguntas.
 def pregunta_06():
 
     import pandas as pd
-
-    # Ruta al archivo tbl0.tsv en la carpeta "files"
     ruta_archivo = "files\input/tbl1.tsv"
 
     try:
-    # Leer el archivo usando pandas
-        tabla = pd.read_csv(ruta_archivo, sep='\t')
     
-    # Verificar si existen las columnas 'c4'
+        tabla = pd.read_csv(ruta_archivo, sep='\t')
+
         if 'c4' in tabla.columns:
         
             pregunta_06 = sorted(tabla['c4'].str.upper().unique())
