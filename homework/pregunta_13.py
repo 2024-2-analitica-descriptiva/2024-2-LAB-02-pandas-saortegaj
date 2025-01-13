@@ -10,7 +10,7 @@ def pregunta_13():
 
     import pandas as pd
     ruta_1 = "files/input/tbl0.tsv"
-    ruta_2="files\input/tbl2.tsv"
+    ruta_2="files/input/tbl2.tsv"
     try:
         tabla_1 = pd.read_csv(ruta_1, sep='\t')
         tabla_2=pd.read_csv(ruta_2,sep='\t')

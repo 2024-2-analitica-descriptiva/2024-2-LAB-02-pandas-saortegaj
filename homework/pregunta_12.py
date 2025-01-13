@@ -11,7 +11,7 @@ def pregunta_12():
 
     import pandas as pd
     
-    ruta_archivo = "files\input/tbl2.tsv"
+    ruta_archivo = "files/input/tbl2.tsv"
 
     try:
         tabla = pd.read_csv(ruta_archivo, sep='\t')
