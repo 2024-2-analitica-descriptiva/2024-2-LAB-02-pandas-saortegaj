@@ -12,19 +12,15 @@ def pregunta_05():
     
     ruta_archivo = "files/input/tbl0.tsv"
 
-    try:
-        tabla = pd.read_csv(ruta_archivo, sep='\t')
+    tabla = pd.read_csv(ruta_archivo, sep='\t')
     
 
-        if 'c1' in tabla.columns and 'c2' in tabla.columns:
-            pregunta_05 = tabla.groupby('c1')['c2'].max()
-            print("Valor máximo de 'c2' por cada letra en la columna 'c1':")
-            print(pregunta_05)
-        else:
-            print("Las columnas 'c1' y/o 'c2' no existen en el archivo.")
-    except FileNotFoundError:
-        print(f"El archivo '{ruta_archivo}' no existe.")
-    except Exception as e:
-        print(f"Se produjo un error: {e}")
+    if 'c1' in tabla.columns and 'c2' in tabla.columns:
+        pregunta_05 = tabla.groupby('c1')['c2'].max()
+        print("Valor máximo de 'c2' por cada letra en la columna 'c1':")
+        print(pregunta_05)
+    else:
+        print("Las columnas 'c1' y/o 'c2' no existen en el archivo.")
+
     return pregunta_05
 pregunta_05()

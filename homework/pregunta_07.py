@@ -10,21 +10,17 @@ def pregunta_07():
 
     import pandas as pd
     ruta_archivo = "files/input/tbl0.tsv"
+    
+    tabla = pd.read_csv(ruta_archivo, sep='\t')
 
-    try:
-        tabla = pd.read_csv(ruta_archivo, sep='\t')
-
-        if 'c1'  in tabla.columns and 'c2' in tabla.columns:
+    if 'c1'  in tabla.columns and 'c2' in tabla.columns:
         
-            pregunta_07 = tabla.groupby('c1')['c2'].sum()
-            print("la suma por cada letra de 'c1':")
-            print(pregunta_07)
-        else:
-            print("Las columnas 'c1' y/o 'c2' no existen en el archivo.")
-    except FileNotFoundError:
-        print(f"El archivo '{ruta_archivo}' no existe.")
-    except Exception as e:
-        print(f"Se produjo un error: {e}")
+        pregunta_07 = tabla.groupby('c1')['c2'].sum()
+        print("la suma por cada letra de 'c1':")
+        print(pregunta_07)
+    else:
+        print("Las columnas 'c1' y/o 'c2' no existen en el archivo.")
+
     return pregunta_07
         
 pregunta_07()
